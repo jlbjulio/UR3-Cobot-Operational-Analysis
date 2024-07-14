@@ -9,7 +9,7 @@ El proyecto emplea técnicas de agrupamiento para analizar el conjunto de datos 
 - Agrupación: aplicación de varios algoritmos de agrupación para identificar patrones y anomalías.
 - Visualización: creación de visualizaciones para interpretar los resultados de la agrupación.
 
-Los parámetros en el conjunto de datos UR3 CobotOps están directamente relacionados con la operación y el rendimiento del cobot. Veamos cómo se relaciona cada parámetro con el cobot:
+Los parámetros en el conjunto de datos UR3 CobotOps están directamente relacionados con la operación y el rendimiento del cobot. 
 
 1.	Corrientes eléctricas:
   - Indican el consumo de energía de los motores en cada articulación
