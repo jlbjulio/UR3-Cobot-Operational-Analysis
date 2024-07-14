@@ -1,4 +1,4 @@
-# ProyectoFinalAnalisis
+# Proyecto Final de Analisis de datos y toma de decisiones
 Proyecto Final de Analisis de datos y toma de decisiones
 
 Los parámetros en el conjunto de datos UR3 CobotOps están directamente relacionados con la operación y el rendimiento del cobot. Veamos cómo se relaciona cada parámetro con el cobot:
