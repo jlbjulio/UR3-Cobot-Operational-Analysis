@@ -5,9 +5,9 @@ Este proyecto se centra en el análisis de agrupamiento del conjunto de datos UR
 
 El proyecto emplea técnicas de agrupamiento para analizar el conjunto de datos UR3 CobotOps. La metodología principal implica:
 
-Preprocesamiento de datos: manejo de valores faltantes, normalización de datos y codificación de variables categóricas.
-Agrupación: aplicación de varios algoritmos de agrupación para identificar patrones y anomalías.
-Visualización: creación de visualizaciones para interpretar los resultados de la agrupación.
+- Preprocesamiento de datos: manejo de valores faltantes, normalización de datos y codificación de variables categóricas.
+- Agrupación: aplicación de varios algoritmos de agrupación para identificar patrones y anomalías.
+- Visualización: creación de visualizaciones para interpretar los resultados de la agrupación.
 
 Los parámetros en el conjunto de datos UR3 CobotOps están directamente relacionados con la operación y el rendimiento del cobot. Veamos cómo se relaciona cada parámetro con el cobot:
 
