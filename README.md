@@ -1,6 +1,8 @@
 # Proyecto Final de Analisis de datos y toma de decisiones
 Proyecto Final de Analisis de datos y toma de decisiones
 
+Este proyecto se centra en el análisis de agrupamiento del conjunto de datos UR3 CobotOps. El conjunto de datos incluye datos de series temporales multidimensionales del cobot UR3, que ofrecen información sobre parámetros operativos y fallas para el aprendizaje automático en robótica y automatización.
+
 Los parámetros en el conjunto de datos UR3 CobotOps están directamente relacionados con la operación y el rendimiento del cobot. Veamos cómo se relaciona cada parámetro con el cobot:
 
 1.	Corrientes eléctricas:
