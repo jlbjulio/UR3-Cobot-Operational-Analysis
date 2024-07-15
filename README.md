@@ -67,3 +67,29 @@ En el cobot UR3, generalmente:
 - J3: Primera articulación de la "muñeca" 
 - J4: Segunda articulación de la "muñeca" - suele permitir el giro 
 - J5: Tercera articulación de la "muñeca" - típicamente permite la rotación final del efector
+
+Gráficos de clustering (K-Means, Jerárquico y DBSCAN): 
+-	Eje X: Componente PCA 1
+-	Eje Y: Componente PCA 2
+  
+Interpretación: Estos valores no tienen un "mejor" o "peor" caso. Son simplemente coordenadas en un espacio bidimensional que representan las dos características principales extraídas de los datos originales. Los puntos que están más cerca entre sí en este espacio son más similares en los datos originales.
+
+Gráfico del método del codo: 
+-	Eje X: Número de clusters
+-	Eje Y: SSE (Suma de Errores Cuadráticos)
+  
+Interpretación: Valores más bajos de SSE son generalmente mejores, ya que indican una menor variación dentro de los clusters. Sin embargo, el objetivo es encontrar un "codo" en la curva, donde aumentar el número de clusters no produce una reducción significativa en el SSE. Este punto de inflexión sugiere el número óptimo de clusters. 
+
+Gráfico K-distancia de DBSCAN: 
+-	Eje X: Puntos de datos ordenados por distancia
+-	Eje Y: Epsilon (distancia)
+  
+Interpretación: No hay un "mejor" valor aquí. El objetivo es identificar un "codo" en la curva, similar al método del codo. Este codo sugiere un buen valor para el parámetro epsilon en DBSCAN, que es la distancia máxima entre dos muestras para que una se considere en el vecindario de la otra. 
+
+Gráfico de series temporales: 
+-	Eje X: Índice (tiempo)
+-	Eje Y: Valor de la variable (temperatura o corriente)
+  
+Interpretación: 
+-	Para temperaturas: Generalmente, valores más bajos son mejores, ya que temperaturas más altas pueden indicar sobrecalentamiento o ineficiencia.
+-	Para corrientes: La interpretación depende del contexto específico del robot. Valores consistentes y dentro del rango esperado son generalmente mejores. Picos o valores muy altos podrían indicar un problema.
