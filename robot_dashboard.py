@@ -13,7 +13,7 @@ import traceback
 
 # Cargar y preprocesar los datos
 try:
-    ruta_dataset = "dataset.xlsx"
+    ruta_dataset = "/home/gtfojulio/ProyectoFinalAnalisis/dataset.xlsx"
     df = pd.read_excel(ruta_dataset)
     print(f"Datos cargados. Shape: {df.shape}")
 except Exception as e:
@@ -91,8 +91,8 @@ app = dash.Dash(__name__)
 
 # Definir el diseño
 app.layout = html.Div([
-    html.H1('Panel de Control de Análisis de Datos de Robot'),
-    
+    html.H1('Análisis de Datos de Robot UR3 CobotOps'),
+
     dcc.Tabs([
         dcc.Tab(label='Visión General de Datos', children=[
             html.Div([
@@ -194,7 +194,7 @@ def actualizar_grafico_metodo_codo(_):
     if 'sse' not in globals():
         return go.Figure()
     fig = go.Figure(data=go.Scatter(x=list(range(1, 11)), y=sse, mode='lines+markers'))
-    fig.update_layout(title='Método del codo para número óptimo de clusters', xaxis_title='Número de clusters', yaxis_title='SSE')
+    fig.update_layout(title='Método del codo para número óptimo de clusters', xaxis_title='Número de clusters', yaxis_title='SSE (Suma de Errores Cuadráticos)')
     return fig
 
 @app.callback(
@@ -227,7 +227,7 @@ def actualizar_grafico_kdistancia(_):
     if 'distancias' not in globals():
         return go.Figure()
     fig = go.Figure(data=go.Scatter(x=list(range(len(distancias))), y=distancias, mode='lines'))
-    fig.update_layout(title='Gráfico K-distancia para DBSCAN', xaxis_title='Puntos de datos ordenados por distancia', yaxis_title='Epsilon')
+    fig.update_layout(title='Gráfico K-distancia para DBSCAN', xaxis_title='Puntos de datos ordenados por distancia', yaxis_title='Epsilon (Proximidad necesaria entre puntos para formar clusters)')
     return fig
 
 @app.callback(
@@ -249,7 +249,7 @@ def actualizar_clusters_dbscan(_):
 def actualizar_grafico(variable_seleccionada, rango_indice):
     if df.empty:
         return go.Figure()
-    
+
     indice_inicio, indice_fin = rango_indice
     df_filtrado = df.iloc[indice_inicio:indice_fin+1]
 
@@ -263,7 +263,7 @@ def actualizar_grafico(variable_seleccionada, rango_indice):
     fig = go.Figure()
     for col in cols:
         fig.add_trace(go.Scatter(x=df_filtrado.index, y=df_filtrado[col], mode='lines', name=col))
-    
+
     fig.update_layout(title=titulo, xaxis_title='Índice', yaxis_title='Valor')
     return fig
 
