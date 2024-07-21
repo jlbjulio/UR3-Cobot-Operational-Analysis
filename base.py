@@ -8,7 +8,7 @@ Original file is located at
 """
 
 # Calculate skewness for each feature to understand their distributions
-import numpy as np
+import numpy as np 
 import pandas as pd
 import seaborn as sns
 import dash
@@ -51,7 +51,7 @@ df['Robot_ProtectiveStop'] = df['Robot_ProtectiveStop'].astype(float)
 missing_proportion = df.isnull().mean()
 print(missing_proportion)
 
-# Show the plot
+# Mostrar plot
 # Visualize missing values using a heatmap
 # cbar=False: This parameter controls whether or not to display the color bar (cbar) alongside the heatmap.
 # The color bar is a scale that shows how the colors map to data values. Setting cbar=False hides this scale.
@@ -66,7 +66,7 @@ plt.show()
 # We decided to drop the rows since more than 20 columns were having null values for these rows.
 df.dropna(inplace=True)
 df.isnull().sum()
-print(f'Checking length of the entire data frame {len(df)}')
+print(f'Comprobando la longitud de todo el data frame {len(df)}')
 
 # Drop the 'Timestamp' and 'Num' columns
 df.drop(columns=['Timestamp', 'Num'], inplace=True)
@@ -77,13 +77,13 @@ df.corr()
 # Select columns for normalization (excluding 'grip_lost' and 'Robot_ProtectiveStop')
 # removed these two columns since normalizing binary data does not make sense
 columns_to_normalize = df.columns.difference(['grip_lost', 'Robot_ProtectiveStop'])
-print(f'Checking length of the entire data frame {len(df)}')
+print(f'Comprobando la longitud de todo el dataframe {len(df)}')
 
-# Show the plot
+# Mostrar plot
 # Visualize outliers using box plots
 plt.figure(figsize=(15, 10))
 df[columns_to_normalize].boxplot(rot=45)
-plt.title('Box plot to visualize outliers')
+plt.title('Diagrama de caja para visualizar valores atípicos')
 plt.show()
 
 Q1 = df[columns_to_normalize].quantile(0.25)
@@ -95,9 +95,9 @@ print("Q1:\n", Q1)
 print("\nQ3:\n", Q3)
 print("\nIQR:\n", IQR)
 
-print(f'Checking length of the entire data frame {len(df)}')
+print(f'Comprobando la longitud de todo el data frame {len(df)}')
 
-print(f'Checking length of the entire data frame {len(df)}')
+print(f'Comprobando la longitud de todo el data frame {len(df)}')
 
 # Create a dictionary to store the counts
 value_distribution = {}
@@ -132,13 +132,13 @@ print(f'Checking length of the entire data frame {len(df)}')
 df[columns_to_normalize] += 1 - df[columns_to_normalize].min()
 
 skewness = df[columns_to_normalize].apply(lambda x: skew(x))
-print("Skewness of the features before transformation:")
+print("Asimetría de las características antes de la transformación:")
 print(skewness)
 
-# Show the plot
+# Mostrar plot
 # Visualize skewness using histograms
 df[columns_to_normalize].hist(bins=30, figsize=(15, 10))
-plt.suptitle('Histograms of features before transformation')
+plt.suptitle('Histogramas de características antes de la transformación')
 plt.show()
 
 # Normalize the selected columns
@@ -154,30 +154,29 @@ df[columns_to_normalize] = scaler.fit_transform(df[columns_to_normalize])
 
 print(f'Checking length of the entire data frame {len(df)}')
 
-from sklearn.preprocessing import PowerTransformer
 
-
+# TRANSFORMACIÓN DE DATOS USANDO EL MODULO POWERTRANSFORMER
 pt = PowerTransformer(method='yeo-johnson')
 
 # Apply the transformation to the specified columns
 df[columns_to_normalize] = pt.fit_transform(df[columns_to_normalize])
 
 skewness_after = df[columns_to_normalize].apply(lambda x: skew(x))
-print("Skewness of the features after transformation:")
+print("Asimetría de las características después de la transformación:")
 print(skewness_after)
 
-# Show the plot
-# Visualize histograms after transformation
+# Mostrar plot
+# Visualización de histogramas despues de la transformación
 df[columns_to_normalize].hist(bins=30, figsize=(15, 10))
-plt.suptitle('Histograms of features after transformation')
+plt.suptitle('Histogramas de características después de la transformación')
 plt.show()
 
-# Show the plot
-# Plot the correlation matrix
+# Mostrar plot
+# Plot  Matriz de correlación
 plt.figure(figsize=(12, 8))
 correlation_matrix = df.corr()
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
-plt.title('Correlation Matrix')
+plt.title('Matriz de correlación')
 plt.show()
 
 # Print the first few rows of the dataframe
@@ -208,12 +207,12 @@ for k in range(1, 11):
     kmeans.fit(data_pca)
     sse.append(kmeans.inertia_)
 
-# Show the plot
+# Mostrar plot
 plt.figure(figsize=(8, 5))
 plt.plot(range(1, 11), sse, marker='o')
 plt.xlabel('Number of Clusters')
 plt.ylabel('SSE')
-plt.title('Elbow Method for Optimal Number of Clusters')
+plt.title('Método del codo para el número óptimo de conglomerados')
 plt.show()
 
 # Apply K-Means clustering algorithm
@@ -223,23 +222,23 @@ kmeans = KMeans(n_clusters=n_clusters, random_state=42)
 kmeans.fit(data_pca)
 df['KMeans_Cluster'] = kmeans.labels_
 
-# Show the plot
+# Mostrar plot
 # Visualize the K-Means clusters
 plt.figure(figsize=(10, 6))
 sns.scatterplot(x=data_pca[:, 0], y=data_pca[:, 1], hue=df['KMeans_Cluster'], palette='viridis')
-plt.title('K-Means Clusters Visualization')
+plt.title('Visualización de conglomerados K-Means')
 plt.xlabel('PCA Component 1')
 plt.ylabel('PCA Component 2')
 plt.show()
 
 # Apply K-Means clustering algorithm
-# Print the silhouette score for K-Means
+# Imprimir la puntuación de silueta para K-Means
 kmeans_silhouette_avg = silhouette_score(data_pca, df['KMeans_Cluster'])
-print(f'K-Means Silhouette Score: {kmeans_silhouette_avg}')
+print(f'Puntuación de silueta K-Means: {kmeans_silhouette_avg}')
 
-# K-Means Silhouette Score: 0.6102758974479
+# Puntuación de silueta K-Means: 0.6102758974479
 
-# Show the plot
+# Mostrar plot
 # Hierarchical Clustering
 # Perform hierarchical clustering using Ward's method
 linked = linkage(data_pca, method='ward')
@@ -247,13 +246,13 @@ linked = linkage(data_pca, method='ward')
 # Plot the dendrogram
 plt.figure(figsize=(10, 7))
 dendrogram(linked, orientation='top', distance_sort='descending', show_leaf_counts=True)
-plt.title('Hierarchical Clustering Dendrogram')
-plt.xlabel('Sample Index')
-plt.ylabel('Distance')
+plt.title('Dendrograma de agrupación jerárquica')
+plt.xlabel('Índice de muestras')
+plt.ylabel('Distancia')
 plt.show()
 
-# Perform hierarchical clustering and create a linkage matrix
-# Hyperparameter tuning for Hierarchical Clustering
+# Realizar clustering jerárquico y crear una matriz de vinculación
+# Ajuste de hiperparámetros para la agrupación jerárquica
 param_grid = {'n_clusters': list(range(2, 11)),
               'linkage': ['ward', 'complete', 'average', 'single']}
 
@@ -278,19 +277,19 @@ for linkage_method in param_grid['linkage']:
         model = AgglomerativeClustering(n_clusters=n_clusters, linkage=linkage_method)
         labels = model.fit_predict(data_pca)
         silhouette_avg = silhouette_score(data_pca, labels)
-        print(f'Linkage: {linkage_method}, Clusters: {n_clusters}, Silhouette Score: {silhouette_avg}')
+        print(f'Vinculación: {linkage_method}, Clusters: {n_clusters}, Puntaje de Silueta: {silhouette_avg}')
         if silhouette_avg > best_silhouette:
             best_silhouette = silhouette_avg
             best_params = {'n_clusters': n_clusters, 'linkage': linkage_method}
             best_model = model
 
-print(f'Best Silhouette Score for Hierarchical Clustering: {best_silhouette}')
-print(f'Best Parameters for Hierarchical Clustering: {best_params}')
+print(f'Mejor puntuación de silueta para la agrupación jerárquica: {best_silhouette}')
+print(f'Los mejores parámetros para la agrupación jerárquica: {best_params}')
 
 # Add the best cluster labels from Hierarchical Clustering to the original dataframe
 df['Hierarchical_Cluster'] = best_model.labels_
 
-# Show the plot
+# Mostrar plot
 # Visualize the Hierarchical clusters
 # [:, 0] represents the first PCA component
 # [:, 1] represents the second PCA component.
@@ -301,14 +300,14 @@ plt.xlabel('PCA Component 1')
 plt.ylabel('PCA Component 2')
 plt.show()
 
-# Show the plot
+# Mostrar plot
 # DBSCAN Clustering
-# Find the optimal epsilon using the k-distance graph
+# Encontrar el épsilon óptimo usando el grafo k-distancia
 
-# distances, indices = neighbors_fit.kneighbors(data_pca):
-# Computes the distances and indices of the 5 nearest neighbors for each data point in data_pca.
-# distances = np.sort(distances[:, 4], axis=0): Sorts and selects the distances to the 5th nearest neighbor (n_neighbors=5)
-# for each data point. This array of distances will be used to plot the k-distance graph.
+# distancias, índices = vecinos_fit.kneighbors(datos_pca):
+# Calcula las distancias y los índices de los 5 vecinos más cercanos para cada punto de datos en data_pca.
+# distances = np.sort(distances[:, 4], axis=0): Ordena y selecciona las distancias al 5º vecino más cercano (n_vecinos=5)
+# para cada punto de datos. Esta matriz de distancias se utilizará para trazar el gráfico de k-distancias.
 neighbors = NearestNeighbors(n_neighbors=5)
 neighbors_fit = neighbors.fit(data_pca)
 distances, indices = neighbors_fit.kneighbors(data_pca)
@@ -325,18 +324,18 @@ plt.show()
 # From the plot, choose an appropriate epsilon (e.g., the point of maximum curvature)
 epsilon = 0.05  # Adjust this value based on the K-Distance Graph
 
-# Apply DBSCAN clustering algorithm
-# Perform DBSCAN clustering
+# Aplicar el algoritmo de agrupación DBSCAN
+# Realizar la agrupación DBSCAN
 dbscan = DBSCAN(eps=epsilon, min_samples=5)
 dbscan_labels = dbscan.fit_predict(data_pca)
 
-# Add the DBSCAN cluster labels to the original dataframe
+# Añadir las etiquetas de cluster DBSCAN al marco de datos original
 df['DBSCAN_Cluster'] = dbscan_labels
 
 # Visualize the DBSCAN clusters
 plt.figure(figsize=(10, 6))
 sns.scatterplot(x=data_pca[:, 0], y=data_pca[:, 1], hue=df['DBSCAN_Cluster'], palette='viridis')
-plt.title('DBSCAN Clusters Visualization')
+plt.title('Visualización de clusters DBSCAN')
 plt.xlabel('PCA Component 1')
 plt.ylabel('PCA Component 2')
 plt.show()
@@ -344,7 +343,7 @@ plt.show()
 # Print the silhouette score for DBSCAN clustering (only if there is more than one cluster)
 if len(set(dbscan_labels)) > 1:
     dbscan_silhouette_avg = silhouette_score(data_pca, df['DBSCAN_Cluster'])
-    print(f'DBSCAN Silhouette Score: {dbscan_silhouette_avg}')
+    print(f'Puntuación de la silueta DBSCAN: {dbscan_silhouette_avg}')
 
 # Crear listas de columnas, verificando que existan en el DataFrame
 temp_cols = [col for col in ['Temperature_T0', 'Temperature_J1', 'Temperature_J2', 'Temperature_J3', 'Temperature_J4', 'Temperature_J5'] if col in df.columns]
