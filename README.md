@@ -1,6 +1,8 @@
 # Proyecto Final de Analisis de datos y toma de decisiones
 Proyecto Final de Analisis de datos y toma de decisiones
 
+#Análisis de Datos de Robot UR3 CobotOps
+
 Archivo directivo a Dashboard : http://gtfojulio.pythonanywhere.com/
 
 Este proyecto se centra en el análisis de agrupamiento del conjunto de datos UR3 CobotOps. El conjunto de datos incluye datos de series temporales multidimensionales del cobot UR3, que ofrecen información sobre parámetros operativos y fallas para el aprendizaje automático en robótica y automatización.
