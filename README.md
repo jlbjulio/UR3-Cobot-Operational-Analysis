@@ -1,101 +1,113 @@
-# Proyecto Final de Analisis de datos y toma de decisiones
-Proyecto Final de Analisis de datos y toma de decisiones
+# Final Project: Data Analysis and Decision Making
+Final Project for Data Analysis and Decision Making
 
-Análisis de Datos de Robot UR3 CobotOps
+**UR3 CobotOps Data Analysis**
 
+This project focuses on clustering analysis of the UR3 CobotOps dataset. The dataset includes multidimensional time series data from the UR3 cobot, providing insights into operational parameters and failures for machine learning in robotics and automation.
 
-Este proyecto se centra en el análisis de agrupamiento del conjunto de datos UR3 CobotOps. El conjunto de datos incluye datos de series temporales multidimensionales del cobot UR3, que ofrecen información sobre parámetros operativos y fallas para el aprendizaje automático en robótica y automatización.
+The project employs clustering techniques to analyze the UR3 CobotOps dataset. The main methodology includes:
 
-El proyecto emplea técnicas de agrupamiento para analizar el conjunto de datos UR3 CobotOps. La metodología principal implica:
+- **Data Preprocessing**: Handling missing values, data normalization, and encoding categorical variables.
+- **Clustering**: Applying several clustering algorithms to identify patterns and anomalies.
+- **Visualization**: Creating visualizations to interpret clustering results.
 
-- Preprocesamiento de datos: manejo de valores faltantes, normalización de datos y codificación de variables categóricas.
-- Agrupación: aplicación de varios algoritmos de agrupación para identificar patrones y anomalías.
-- Visualización: creación de visualizaciones para interpretar los resultados de la agrupación.
+The parameters in the UR3 CobotOps dataset are directly related to the operation and performance of the cobot.
 
-Los parámetros en el conjunto de datos UR3 CobotOps están directamente relacionados con la operación y el rendimiento del cobot. 
+1. **Electric Currents**:
+   - Indicate energy consumption of the motors in each joint.
+   - Can help detect irregularities or inefficiencies in movement.
 
-1.	Corrientes eléctricas:
-  - Indican el consumo de energía de los motores en cada articulación
-  -	Pueden ayudar a detectar irregularidades o ineficiencias en el movimiento
-3.	Temperaturas: 
-  -	Monitorean las condiciones térmicas de motores y componentes
-  -	Cruciales para prevenir el sobrecalentamiento y asegurar un rendimiento óptimo
-4.	Velocidades en las articulaciones (J0-J5): 
-  -	Representan el movimiento de cada una de las seis articulaciones
-  -	Importantes para analizar patrones de movimiento y eficiencia
-5.	Corriente del gripper: 
-  -	Se relaciona con la energía utilizada por el efector final (pinza)
-  -	Puede indicar la fuerza de agarre y la interacción con objetos
-6.	Recuento de ciclos de operación: 
-  -	Registra cuántas veces el cobot ha realizado sus tareas programadas
-  -	Útil para programar mantenimiento y analizar la vida útil
-7.	Paradas protectoras: 
-  -	Registran cuándo se activan las características de seguridad del cobot
-  -	Críticas para garantizar una operación segura alrededor de humanos
-8.	Pérdidas de agarre: 
-  -	Indican instancias donde el gripper falló en mantener sujeto un objeto
-  -	Importantes para el control de calidad y el análisis de la tasa de éxito de las tareas
+2. **Temperatures**:
+   - Monitor thermal conditions of motors and components.
+   - Crucial for preventing overheating and ensuring optimal performance.
 
+3. **Joint Speeds (J0-J5)**:
+   - Represent the movement of each of the six joints.
+   - Important for analyzing motion patterns and efficiency.
 
-Estos parámetros proporcionan colectivamente una visión integral del estado operativo del cobot, su rendimiento y posibles problemas. Son cruciales para:
-  -	Optimización del rendimiento
-  -	Mantenimiento predictivo
-  - onitoreo de seguridad
-  - Control de calidad en procesos industriales
+4. **Gripper Current**:
+   - Related to the energy used by the end effector (gripper).
+   - Can indicate grip strength and interaction with objects.
 
+5. **Operation Cycle Count**:
+   - Records how many times the cobot has performed its programmed tasks.
+   - Useful for scheduling maintenance and analyzing lifespan.
 
-Temperatura J0, J1, J2, J3, J4, J5: 
+6. **Protective Stops**:
+   - Record when the cobot's safety features are triggered.
+   - Critical for ensuring safe operation around humans.
 
-- Estas son las temperaturas de cada una de las seis articulaciones del cobot.
--	J0 a J5 representan las seis articulaciones del robot, desde la base hasta el efector final.
--	Medir la temperatura de cada articulación es crucial para detectar sobrecalentamiento y prevenir daños.
-  
-Speed J0, J1, J2, J3, J4, J5:
+7. **Grip Losses**:
+   - Indicate instances when the gripper failed to hold an object.
+   - Important for quality control and analyzing task success rate.
 
--	Estas son las velocidades de rotación de cada articulación.
--	Indica qué tan rápido se está moviendo cada articulación en un momento dado.
--	Es importante para analizar la dinámica del movimiento y la eficiencia de las operaciones.
-  
-Current J0, J1, J2, J3, J4, J5:
+These parameters collectively provide a comprehensive view of the cobot's operational status, performance, and potential issues. They are crucial for:
+- Performance optimization
+- Predictive maintenance
+- Safety monitoring
+- Quality control in industrial processes
 
--	Se refiere a la corriente eléctrica que consume cada motor de las articulaciones.
-- Proporciona información sobre el esfuerzo que está realizando cada motor.
--	Útil para detectar anomalías en el consumo de energía o posibles fallos mecánicos.
-  
-En el cobot UR3, generalmente:
+---
 
-- J0: Base giratoria 
-- J1: "Hombro" - primera articulación principal 
-- J2: "Codo" - segunda articulación principal 
-- J3: Primera articulación de la "muñeca" 
-- J4: Segunda articulación de la "muñeca" - suele permitir el giro 
-- J5: Tercera articulación de la "muñeca" - típicamente permite la rotación final del efector
+### Temperatures J0, J1, J2, J3, J4, J5:
 
-Gráficos de clustering (K-Means, Jerárquico y DBSCAN): 
--	Eje X: Componente PCA 1
--	Eje Y: Componente PCA 2
-  
-Interpretación: Estos valores no tienen un "mejor" o "peor" caso. Son simplemente coordenadas en un espacio bidimensional que representan las dos características principales extraídas de los datos originales. Los puntos que están más cerca entre sí en este espacio son más similares en los datos originales.
+- These are the temperatures of each of the cobot’s six joints.
+- J0 to J5 represent the six joints of the robot, from base to end effector.
+- Monitoring joint temperature is essential to detect overheating and prevent damage.
 
-Gráfico del método del codo: 
--	Eje X: Número de clusters
--	Eje Y: SSE (Suma de Errores Cuadráticos)
-  
-Interpretación: Valores más bajos de SSE son generalmente mejores, ya que indican una menor variación dentro de los clusters. Sin embargo, el objetivo es encontrar un "codo" en la curva, donde aumentar el número de clusters no produce una reducción significativa en el SSE. Este punto de inflexión sugiere el número óptimo de clusters. 
+### Speed J0, J1, J2, J3, J4, J5:
 
-Gráfico K-distancia de DBSCAN: 
--	Eje X: Puntos de datos ordenados por distancia
--	Eje Y: Epsilon (distancia)
-  
-Interpretación: No hay un "mejor" valor aquí. El objetivo es identificar un "codo" en la curva, similar al método del codo. Este codo sugiere un buen valor para el parámetro epsilon en DBSCAN, que es la distancia máxima entre dos muestras para que una se considere en el vecindario de la otra. 
+- These are the rotation speeds of each joint.
+- Indicate how fast each joint is moving at a given moment.
+- Important for analyzing motion dynamics and operational efficiency.
 
-Gráfico de series temporales: 
--	Eje X: Índice (tiempo)
--	Eje Y: Valor de la variable (temperatura o corriente)
-  
-Interpretación: 
--	Para temperaturas: Generalmente, valores más bajos son mejores, ya que temperaturas más altas pueden indicar sobrecalentamiento o ineficiencia.
--	Para corrientes: La interpretación depende del contexto específico del robot. Valores consistentes y dentro del rango esperado son generalmente mejores. Picos o valores muy altos podrían indicar un problema.
+### Current J0, J1, J2, J3, J4, J5:
+
+- Refers to the electrical current drawn by each joint motor.
+- Provides information on the effort each motor is exerting.
+- Useful for detecting anomalies in power consumption or potential mechanical failures.
+
+In the UR3 cobot, typically:
+- J0: Rotating base
+- J1: "Shoulder" - first main joint
+- J2: "Elbow" - second main joint
+- J3: First wrist joint
+- J4: Second wrist joint – usually allows rotation
+- J5: Third wrist joint – typically enables final end effector rotation
+
+---
+
+### Clustering Graphs (K-Means, Hierarchical, and DBSCAN):
+- **X-axis**: PCA Component 1
+- **Y-axis**: PCA Component 2
+
+**Interpretation**: These values don't represent "better" or "worse" scenarios. They are simply coordinates in a 2D space representing the two main features extracted from the original data. Points closer together in this space are more similar in the original dataset.
+
+---
+
+### Elbow Method Plot:
+- **X-axis**: Number of clusters
+- **Y-axis**: SSE (Sum of Squared Errors)
+
+**Interpretation**: Lower SSE values are generally better, as they indicate less variation within clusters. However, the goal is to find a "knee" in the curve, where increasing the number of clusters doesn't significantly reduce SSE. This inflection point suggests the optimal number of clusters.
+
+---
+
+### DBSCAN K-Distance Graph:
+- **X-axis**: Data points sorted by distance
+- **Y-axis**: Epsilon (distance)
+
+**Interpretation**: There is no "best" value here. The goal is to identify a "knee" in the curve, similar to the elbow method. This knee suggests a good epsilon value for DBSCAN, which is the maximum distance between two samples for one to be considered in the neighborhood of the other.
+
+---
+
+### Time Series Plot:
+- **X-axis**: Index (time)
+- **Y-axis**: Variable value (temperature or current)
+
+**Interpretation**:
+- **For Temperatures**: Generally, lower values are better, as higher temperatures can indicate overheating or inefficiency.
+- **For Currents**: Interpretation depends on the robot’s specific context. Consistent values within the expected range are generally good. Spikes or very high values may indicate a problem.
 
 ---
 
