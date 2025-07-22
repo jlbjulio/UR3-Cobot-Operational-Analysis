@@ -1,6 +1,4 @@
-# Final Project: Análisis de datos
-
-**UR3 CobotOps Data Analysis**
+# UR3 CobotOps Data Analysis
 
 This project focuses on clustering analysis of the UR3 CobotOps dataset. The dataset includes multidimensional time series data from the UR3 cobot, providing insights into operational parameters and failures for machine learning in robotics and automation.
 
