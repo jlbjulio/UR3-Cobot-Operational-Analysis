@@ -1,5 +1,4 @@
 # Final Project: Análisis de datos
-Final Project for Análisis de datos
 
 **UR3 CobotOps Data Analysis**
 
