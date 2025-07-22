@@ -96,3 +96,9 @@ Gráfico de series temporales:
 Interpretación: 
 -	Para temperaturas: Generalmente, valores más bajos son mejores, ya que temperaturas más altas pueden indicar sobrecalentamiento o ineficiencia.
 -	Para corrientes: La interpretación depende del contexto específico del robot. Valores consistentes y dentro del rango esperado son generalmente mejores. Picos o valores muy altos podrían indicar un problema.
+
+---
+
+> **Note**: This project was originally developed in Spanish. The README is written in English for documentation and sharing purposes.
+
+
