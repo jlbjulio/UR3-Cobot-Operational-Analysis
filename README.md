@@ -105,7 +105,6 @@ In the UR3 cobot, typically:
 **Interpretation**:
 - **For Temperatures**: Generally, lower values are better, as higher temperatures can indicate overheating or inefficiency.
 - **For Currents**: Interpretation depends on the robot’s specific context. Consistent values within the expected range are generally good. Spikes or very high values may indicate a problem.
-- 
 ---
 
 ## Author
